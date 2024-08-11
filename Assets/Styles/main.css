@@ -32,18 +32,42 @@
 }
 
 .animals__about{
+    display: none;
     grid-column: 3;
 
     margin: 0 0 3rem 0;
 }
 
+.animals__about h2{
+    margin: 0 0 1rem 0;
+
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+
+    color: var(--orange);
+}
+
+.animals__about h2::before{
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 12px;
+    margin: 0 10px 0 0;
+    background-color: var(--yellow);
+
+}
+
 /* faq */
 
-.main__faq dl{
+.faq__questions{
     grid-column: 2 / 4;
 }
 
-.main__faq dl dt{
+.faq__questions dt{
     margin: 2rem 0 0.5rem 0;
 
     font-family: var(--font-primary);
@@ -52,9 +76,11 @@
     line-height: 1;
 
     color: var(--orange);
+
+    cursor: pointer;
 }
 
-.main__faq dl dt::before{
+.faq__questions dt::before{
     content: '';
     display: inline-block;
     width: 20px;
@@ -64,7 +90,16 @@
     background-color: var(--yellow);
 }
 
-.main__faq dl dd{
+.faq__questions dt > span{
+    font-size: 1.125rem;
+    font-weight: bold;
+    line-height: 1;
+
+    margin: 0 0 0 15px;
+}
+
+.faq__questions dd{
+    display: none;
     font-family: var(--font-tertiary);
     line-height: 1.2;
 
@@ -98,13 +133,29 @@
     background-color: var(--yellow);
 }
 
+.main__contact ul li:last-of-type::after{
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 0 0 5px;
+
+    border-radius: 100%;
+    border: 2px solid #000;
+}
+
+#valueBitcoin{
+    background-color: var(--green);
+    padding: 5px;
+}
+
 @media (max-width: 768px){
 
     .animals__scroll{
         grid-column: 1;
     }
 
-    .main__faq dl, .main__contact figure, .main__contact ul{
+    .faq__questions, .main__contact figure, .main__contact ul{
         grid-column: 1 / 4;
     }
 }

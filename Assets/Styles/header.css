@@ -1,0 +1,37 @@
+.header{
+    grid-column: 3 / 5;
+
+    margin: 2rem 0;
+
+    background-color: var(--yellow);
+}
+
+.header nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.header nav ul li{
+    padding: 10px;
+
+    font-weight: bold;
+    font-size: 0.875rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.header nav ul li:last-of-type a::after{
+    content: '►';
+    display: inline-block;
+    margin: 0 0 0 10px;
+}
+
+@media(max-width: 768px){
+    
+    .header{
+        margin: 0 0 2rem 0;
+    }
+}

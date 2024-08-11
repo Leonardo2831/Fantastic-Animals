@@ -1,0 +1,22 @@
+.footer{
+    grid-column: 3 / 5;
+
+    margin: 2rem 0;
+
+    background-color: var(--yellow);
+}
+
+.footer p{
+    padding: 20px;
+
+    font-weight: bold;
+    font-size: 0.875rem;
+    letter-spacing: 0.1rem;
+}
+
+@media(max-width: 768px){
+    
+    .footer{
+        margin: 2rem 0 0 0;
+    }
+}

@@ -37,9 +37,7 @@ const dayWeek = date.getDay();
 const hours = date.getHours();
 const openInfo = document.querySelector('.main__contact ul li:last-of-type');
 
-console.log(dayWeek);
-
-if((hours <= 6 || hours >= 18) && (dayWeek === 0 || dayWeek === 1)){
+if((hours <= 8 || hours >= 18) && (dayWeek === 0 || dayWeek === 6)){
     openInfo.classList.add('close');
     openInfo.classList.remove('open');
 

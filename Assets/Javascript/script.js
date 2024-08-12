@@ -1,17 +1,18 @@
-function tabNav(){
+function initTabNav(){
     const animalsTab = document.querySelectorAll('.js-animalsTab picture img');
     const animalsText = document.querySelectorAll('.js-animalsTab article');
+    const nameClass = 'activeAnimal';
 
     if(animalsTab.length && animalsText.length){
-        animalsText[0].classList.add('activeAnimal');
+        animalsText[0].classList.add(nameClass);
 
         function navigationTab(index){
         
             animalsText.forEach((animalText) =>{
-                animalText.classList.remove('activeAnimal');
+                animalText.classList.remove(nameClass);
             });
         
-            animalsText[index].classList.add('activeAnimal');
+            animalsText[index].classList.add(nameClass);
         
         }
         
@@ -24,20 +25,22 @@ function tabNav(){
         });
     }
 }
-tabNav();
+initTabNav();
 
-function question(){
+function initQuestion(){
     const faqQuestions = document.querySelectorAll('.js-faq dl dt');
+    const nameClassDD = 'openQuestion';
+    const nameClassSpan = 'openFaq';
     
     if(faqQuestions.length){
-        faqQuestions[0].nextElementSibling.classList.add('openQuestion');
-        faqQuestions[0].children[0].classList.add('openFaq');
+        faqQuestions[0].nextElementSibling.classList.add(nameClassDD);
+        faqQuestions[0].children[0].classList.add(nameClassSpan);
 
         function openQuestion(event){
             const questionEvent = this;
         
-            questionEvent.children[0].classList.toggle('openFaq');
-            questionEvent.nextElementSibling.classList.toggle('openQuestion');
+            questionEvent.nextElementSibling.classList.toggle(nameClassDD);
+            questionEvent.children[0].classList.toggle(nameClassSpan);
         }
         
         faqQuestions.forEach((faqQuestion) => {
@@ -45,7 +48,7 @@ function question(){
         });
     }
 }
-question();
+initQuestion();
 
 const date = new Date();
 const dayWeek = date.getDay();

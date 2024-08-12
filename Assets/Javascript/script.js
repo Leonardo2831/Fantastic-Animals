@@ -1,38 +1,51 @@
-// navegação em tab
-const animalsTab = document.querySelectorAll('.js-animalsTab picture img');
-const animalsText = document.querySelectorAll('.js-animalsTab article');
+function tabNav(){
+    const animalsTab = document.querySelectorAll('.js-animalsTab picture img');
+    const animalsText = document.querySelectorAll('.js-animalsTab article');
 
-function navigationTab(index){
+    if(animalsTab.length && animalsText.length){
+        animalsText[0].classList.add('activeAnimal');
 
-    animalsText.forEach((animalText) =>{
-        animalText.classList.remove('activeAnimal');
-    });
-
-    animalsText[index].classList.add('activeAnimal');
-
+        function navigationTab(index){
+        
+            animalsText.forEach((animalText) =>{
+                animalText.classList.remove('activeAnimal');
+            });
+        
+            animalsText[index].classList.add('activeAnimal');
+        
+        }
+        
+        animalsTab.forEach((animalTab, index) => {
+        
+            animalTab.addEventListener('click', () =>{
+                navigationTab(index);
+            });
+        
+        });
+    }
 }
+tabNav();
 
-animalsTab.forEach((animalTab, index) => {
+function question(){
+    const faqQuestions = document.querySelectorAll('.js-faq dl dt');
+    
+    if(faqQuestions.length){
+        faqQuestions[0].nextElementSibling.classList.add('openQuestion');
+        faqQuestions[0].children[0].classList.add('openFaq');
 
-    animalTab.addEventListener('click', () =>{
-        navigationTab(index);
-    });
-
-});
-
-// abrir perguntas
-const faqQuestions = document.querySelectorAll('.main__faq dl dt');
-const faqDetails = document.querySelectorAll('.main__faq dl dt span');
-
-function openQuestion(event){
-    const detailEvent = event.currentTarget.querySelector('span');
-    const selectDD = detailEvent.parentElement.nextElementSibling;
-
-    detailEvent.classList.toggle('spanActive');
-    selectDD.classList.toggle('openQuestion');
+        function openQuestion(event){
+            const questionEvent = this;
+        
+            questionEvent.children[0].classList.toggle('openFaq');
+            questionEvent.nextElementSibling.classList.toggle('openQuestion');
+        }
+        
+        faqQuestions.forEach((faqQuestion) => {
+            faqQuestion.addEventListener('click', openQuestion);
+        });
+    }
 }
-
-faqQuestions.forEach((faqQuestion) => faqQuestion.addEventListener('click', openQuestion));
+question();
 
 const date = new Date();
 const dayWeek = date.getDay();

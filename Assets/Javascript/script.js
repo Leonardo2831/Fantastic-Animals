@@ -23,7 +23,7 @@ const faqQuestions = document.querySelectorAll('.main__faq dl dt');
 const faqDetails = document.querySelectorAll('.main__faq dl dt span');
 
 function openQuestion(event){
-    const detailEvent = event.target.querySelector('span');
+    const detailEvent = event.currentTarget.querySelector('span');
     const selectDD = detailEvent.parentElement.nextElementSibling;
 
     detailEvent.classList.toggle('spanActive');

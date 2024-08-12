@@ -1,22 +1,24 @@
 // navegação em tab
-const animalsAbout = document.querySelectorAll('.animals__about');
-const animalScroll = document.querySelector('.animals__scroll');
+const animalsTab = document.querySelectorAll('.js-animalsTab picture img');
+const animalsText = document.querySelectorAll('.js-animalsTab article');
 
-function navigationTab(event){
-    const imageEventAlt = event.target.getAttribute('alt');
+function navigationTab(index){
 
-    animalsAbout.forEach((animalAbout) =>{
-        animalAbout.classList.remove('activeAnimal');
-
-        if(animalAbout.classList.contains(imageEventAlt)){
-            animalAbout.classList.add('activeAnimal');
-        }
-
+    animalsText.forEach((animalText) =>{
+        animalText.classList.remove('activeAnimal');
     });
+
+    animalsText[index].classList.add('activeAnimal');
 
 }
 
-animalScroll.addEventListener('click', navigationTab);
+animalsTab.forEach((animalTab, index) => {
+
+    animalTab.addEventListener('click', () =>{
+        navigationTab(index);
+    });
+
+});
 
 // abrir perguntas
 const faqQuestions = document.querySelectorAll('.main__faq dl dt');

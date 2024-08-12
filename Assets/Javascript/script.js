@@ -43,6 +43,6 @@ if((hours <= 8 || hours >= 18) && (dayWeek === 0 || dayWeek === 6)){
 
 } else {
     openInfo.classList.add('open');
-    openInfo.classList.add('close');
+    openInfo.classList.remove('close');
     
 }

@@ -50,6 +50,28 @@ function initQuestion(){
 }
 initQuestion();
 
+function initScrollSmooth(){
+    if(linksHeader){
+        const linksHeader = document.querySelectorAll('.js-scrollBehavior a[href^="#"]');
+
+        function scrollSmooth(event){
+            event.preventDefault();
+            const hrefLinks = this.getAttribute('href');
+            const sectionLink = document.querySelector(hrefLinks);
+    
+            sectionLink.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    
+        linksHeader.forEach((linkHeader)=>{
+            linkHeader.addEventListener('click', scrollSmooth);
+        });
+    }
+}
+initScrollSmooth()
+
 const date = new Date();
 const dayWeek = date.getDay();
 const hours = date.getHours();

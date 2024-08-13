@@ -51,8 +51,9 @@ function initQuestion(){
 initQuestion();
 
 function initScrollSmooth(){
+    const linksHeader = document.querySelectorAll('.js-scrollBehavior a[href^="#"]');
+
     if(linksHeader){
-        const linksHeader = document.querySelectorAll('.js-scrollBehavior a[href^="#"]');
 
         function scrollSmooth(event){
             event.preventDefault();
@@ -72,17 +73,48 @@ function initScrollSmooth(){
 }
 initScrollSmooth()
 
-const date = new Date();
-const dayWeek = date.getDay();
-const hours = date.getHours();
-const openInfo = document.querySelector('.main__contact ul li:last-of-type');
+function initShowSection(){
+    const sectionsShow = document.querySelectorAll('.js-showScroll');
+    const windowHalf = window.innerHeight * 0.5;
 
-if((hours <= 8 || hours >= 18) && (dayWeek === 0 || dayWeek === 6)){
-    openInfo.classList.add('close');
-    openInfo.classList.remove('open');
-
-} else {
-    openInfo.classList.add('open');
-    openInfo.classList.remove('close');
-    
+    if(sectionsShow){
+        function showScroll(){
+            sectionsShow.forEach((sectionShow)=>{
+                const nameClass = 'showScroll';
+                const sectionTopWindow = sectionShow.getBoundingClientRect().top - windowHalf;
+        
+                if(sectionTopWindow < 0){
+                    sectionShow.classList.add(nameClass);
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', showScroll);
+    }
 }
+initShowSection();
+
+function initOpenToContact(){
+    const date = new Date();
+    const dayWeek = date.getDay();
+    const hours = date.getHours();
+    const closeDay = (dayWeek === 6 || dayWeek === 0);
+    const closeHours = (hours <= 8 || hours >= 18);
+    
+    const openInfo = document.querySelector('.main__contact ul li:last-of-type');
+    const nameClassClose = 'close';
+    const nameClassOpen = 'open';
+    
+    if(openInfo){
+
+        if(closeDay || closeHours){
+            openInfo.classList.add(nameClassClose);
+            openInfo.classList.remove(nameClassOpen);
+        } else {
+            openInfo.classList.remove(nameClassClose);
+            openInfo.classList.add(nameClassOpen);
+        }
+
+    }
+}
+initOpenToContact();

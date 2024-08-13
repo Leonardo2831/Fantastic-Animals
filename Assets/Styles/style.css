@@ -112,6 +112,10 @@ section.showScroll{
 }
 
 /* open */
+.js .main__contact ul li:last-of-type::after{
+    display: inline-block;
+}
+
 .js .close::after{
     background-color: var(--orange);
 }

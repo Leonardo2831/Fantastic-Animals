@@ -84,7 +84,6 @@ a{
 }
 
 /* openQuestion */
-
 .js .js-faq dl dd{
     display: none;
 }
@@ -100,13 +99,24 @@ span.openFaq{
     transition: all 0.5s ease-in-out;
 }
 
-/* open */
+/* showSections */
+.js section{
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.3s ease-in-out;
+}
 
-.close::after{
+section.showScroll{
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* open */
+.js .close::after{
     background-color: var(--orange);
 }
 
-.open::after{
+.js .open::after{
     background-color: var(--green);
 }
 

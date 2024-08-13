@@ -77,7 +77,7 @@ function initShowSection(){
     const sectionsShow = document.querySelectorAll('.js-showScroll');
     const windowHalf = window.innerHeight * 0.5;
 
-    if(sectionsShow){
+    if(sectionsShow.length){
         function showScroll(){
             sectionsShow.forEach((sectionShow)=>{
                 const nameClass = 'showScroll';

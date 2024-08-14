@@ -76,11 +76,13 @@ initScrollSmooth()
 function initShowSection(){
     const sectionsShow = document.querySelectorAll('.js-showScroll');
     const windowHalf = window.innerHeight * 0.5;
+    const nameClass = 'showScroll';
+    
+    sectionsShow[0].classList.add(nameClass);
 
     if(sectionsShow.length){
         function showScroll(){
             sectionsShow.forEach((sectionShow)=>{
-                const nameClass = 'showScroll';
                 const sectionTopWindow = sectionShow.getBoundingClientRect().top - windowHalf;
         
                 if(sectionTopWindow < 0){

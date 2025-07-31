@@ -1,0 +1,7 @@
+.bg-black{
+    background-color: var(--background-modal);
+
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}

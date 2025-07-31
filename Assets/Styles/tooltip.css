@@ -1,0 +1,21 @@
+.toolTip{
+    max-width: 170px;
+    padding: 8px;
+
+    font-size: 0.875rem;
+    font-family: var(--font-primary);
+    font-weight: bold;
+
+    position: absolute;
+    z-index: 10;
+
+    border-radius: 2px;
+    color: var(--color-white);
+    background-color: var(--background-opacity);
+    box-shadow: 0 0 0 2px var(--yellow),
+                0 0 0 6px var(--background-opacity);
+}
+
+[data-tooltip]{
+    cursor: pointer;
+}

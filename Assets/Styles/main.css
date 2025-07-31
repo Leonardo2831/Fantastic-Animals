@@ -21,12 +21,12 @@
 
 .animals__scroll::-webkit-scrollbar-thumb{
     background-color: var(--yellow);
-    border-left: 4px solid var(--background);
-    border-right: 4px solid var(--background);
+    border-left: 4px solid var(--color-white);
+    border-right: 4px solid var(--color-white);
 }
 
 .animals__scroll::-webkit-scrollbar-track{
-    background-color: var(--background);
+    background-color: var(--color-white);
 }
 
 .animals__about{

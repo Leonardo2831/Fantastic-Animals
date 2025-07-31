@@ -7,10 +7,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 :root{
-    --background: #faf6ed;
+    --color-white: #faf6ed;
     --color-text: #222;
-    --background-modal: rgba(0, 0, 0, 0.5);
-    --shadow:  rgba(0, 0, 0, 0.3);
+    --background-opacity: rgba(0, 0, 0, 0.6);
+    --shadow: rgba(0, 0, 0, 0.3);
 
     --yellow: #fb5;
     --orange: #e54;
@@ -34,7 +34,7 @@
     display: grid;
     grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 
-    background-color: var(--background);
+    background-color: var(--color-white);
     color: var(--color-text);
 
     font-family: var(--font-primary);

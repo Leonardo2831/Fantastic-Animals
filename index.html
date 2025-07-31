@@ -123,16 +123,18 @@
             <p>Todos os direitos reservados.</p>
         </footer>
     </div>
-    <section class="bg-black">
+    <section class="bg-black" data-modal="disabled">
         <form action="#" class="form-login">
-            <div>
-                <label for="email">Email</label>
-                <input type="text" id="email">
+            <div class="login-inputs">
+                <label for="e-mail">Email</label>
+                <input type="text" id="e-mail">
+            </div>
+            <div class="login-inputs">
                 <label for="password">Senha</label>
                 <input type="password" id="password">
-                <button type="submit">Entrar</button>
             </div>
-            <button class="button-close" data-button="modal" type="button">
+            <button type="submit">Entrar</button>
+            <button class="button-close-modal" data-button="modal" type="button">
                 X
             </button>
         </form>

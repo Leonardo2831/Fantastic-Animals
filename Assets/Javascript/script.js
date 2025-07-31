@@ -4,6 +4,7 @@ import initTabNav from './components/tabNav.js';
 import initQuestion from './components/question.js';
 import initInfoContact from './components/infoContact.js';
 import initModalForm from './components/modalForm.js';
+import initToolTip from './components/tooltip.js';
 
 initScrollSmooth();
 initShowSection();
@@ -11,3 +12,4 @@ initTabNav();
 initQuestion();
 initInfoContact();
 initModalForm();
+initToolTip()

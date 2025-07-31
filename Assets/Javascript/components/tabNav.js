@@ -1,6 +1,10 @@
+import { Select } from "./utilitaryFunctions.js";
+
 export default function initTabNav(){
-    const animalsTab = document.querySelectorAll('[data-animals="tab"] picture img');
-    const animalsText = document.querySelectorAll('[data-animals="tab"] article');
+    const select = new Select();
+
+    const animalsTab = select.All('[data-animals="tab"] picture img');
+    const animalsText = select.All('[data-animals="tab"] article');
     const nameClass = 'activeAnimal';
 
     if(animalsTab.length && animalsText.length){

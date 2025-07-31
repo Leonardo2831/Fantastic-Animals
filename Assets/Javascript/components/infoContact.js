@@ -1,11 +1,15 @@
+import { Select } from "./utilitaryFunctions.js";
+
 export default function initInfoContact(){
+    const select = new Select();
+
     const date = new Date();
     const dayWeek = date.getDay();
     const hours = date.getHours();
     const closeDay = (dayWeek === 6 || dayWeek === 0);
     const closeHours = (hours <= 8 || hours >= 18);
     
-    const openInfo = document.querySelector('[data-open="content"] ul li:last-of-type');
+    const openInfo = select.Single('[data-open="content"] ul li:last-of-type');
     
     if(openInfo){
 

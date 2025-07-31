@@ -1,5 +1,9 @@
+import { Select } from "./utilitaryFunctions.js";
+
 export default function initQuestion(){
-    const faqQuestions = document.querySelectorAll('[data-faq] dl dt');
+    const select = new Select();
+
+    const faqQuestions = select.All('[data-faq] dl dt');
     const nameClassDD = 'openQuestion';
     const nameClassSpan = 'openFaq';
     

@@ -1,5 +1,9 @@
+import { Select } from "./utilitaryFunctions.js";
+
 export default function initShowSection(){
-    const sectionsShow = document.querySelectorAll('[data-section="show"]');
+    const select = new Select();
+    
+    const sectionsShow = select.All('[data-section="show"]');
     const windowHalf = window.innerHeight * 0.5;
     const nameClass = 'showScroll';
     

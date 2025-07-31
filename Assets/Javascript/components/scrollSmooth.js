@@ -1,12 +1,16 @@
+import { Select } from "./utilitaryFunctions.js";
+
 export default function initScrollSmooth(){
-    const linksHeader = document.querySelectorAll('[data-scroll="behavior"] a[href^="#"]');
+    const select = new Select();
+
+    const linksHeader = select.All('[data-scroll="behavior"] a[href^="#"]');
 
     if(linksHeader){
 
         function scrollSmooth(event){
             event.preventDefault();
             const hrefLinks = this.getAttribute('href');
-            const sectionLink = document.querySelector(hrefLinks);
+            const sectionLink = select.Single(hrefLinks);
     
             sectionLink.scrollIntoView({
                 behavior: 'smooth',

@@ -36,7 +36,7 @@ function initQuestion(){
         faqQuestions[0].nextElementSibling.classList.add(nameClassDD);
         faqQuestions[0].children[0].classList.add(nameClassSpan);
 
-        function openQuestion(event){
+        function openQuestion(){
             const questionEvent = this;
         
             questionEvent.nextElementSibling.classList.toggle(nameClassDD);
@@ -74,7 +74,7 @@ function initScrollSmooth(){
 initScrollSmooth()
 
 function initShowSection(){
-    const sectionsShow = document.querySelectorAll('[data-scroll="show"]');
+    const sectionsShow = document.querySelectorAll('[data-scroll="right"]');
     const windowHalf = window.innerHeight * 0.5;
     const nameClass = 'showScroll';
     
@@ -103,18 +103,14 @@ function initOpenToContact(){
     const closeDay = (dayWeek === 6 || dayWeek === 0);
     const closeHours = (hours <= 8 || hours >= 18);
     
-    const openInfo = document.querySelector('.main__contact ul li:last-of-type');
-    const nameClassClose = 'close';
-    const nameClassOpen = 'open';
+    const openInfo = document.querySelector('[data-open="content"] ul li:last-of-type');
     
     if(openInfo){
 
         if(closeDay || closeHours){
-            openInfo.classList.add(nameClassClose);
-            openInfo.classList.remove(nameClassOpen);
+            openInfo.dataset.open = false;
         } else {
-            openInfo.classList.remove(nameClassClose);
-            openInfo.classList.add(nameClassOpen);
+            openInfo.dataset.open = true;
         }
 
     }

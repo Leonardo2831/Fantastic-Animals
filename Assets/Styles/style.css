@@ -78,9 +78,14 @@ a{
     display: none;
 }
 
-[data-animals="tab"] article.activeAnimal{
-    display: block;
+[data-scroll="right"].activeAnimal{
+    display: block !important;
     animation: showLeft-to-Right 0.5s forwards;
+}
+
+[data-scroll="bottom"].activeAnimal{
+    display: block !important;
+    animation: showTop-to-bottom 0.5s forwards;
 }
 
 /* openQuestion */
@@ -112,15 +117,15 @@ section.showScroll{
 }
 
 /* open */
-.js .main__contact ul li:last-of-type::after{
+.js [data-open="content"] ul li:last-of-type::after{
     display: inline-block;
 }
 
-.js .close::after{
+.js [data-open="false"]::after{
     background-color: var(--orange);
 }
 
-.js .open::after{
+.js [data-open="true"]::after{
     background-color: var(--green);
 }
 

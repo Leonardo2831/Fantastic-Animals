@@ -21,9 +21,11 @@
     font-size: 0.875rem;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
+
+    cursor: pointer;
 }
 
-.header nav ul li:last-of-type a::after{
+.header nav ul li:last-of-type::after{
     content: '►';
     display: inline-block;
     margin: 0 0 0 10px;

@@ -1,6 +1,7 @@
 @import 'header.css';
 @import 'main.css';
 @import 'footer.css';
+@import 'modal.css';
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
@@ -8,6 +9,7 @@
 :root{
     --background: #faf6ed;
     --color-text: #222;
+    --background-modal: rgba(0, 0, 0, 0.5);
 
     --yellow: #fb5;
     --orange: #e54;
@@ -27,7 +29,7 @@
     box-sizing: border-box;
 }
 
-body{
+.grid-content{
     display: grid;
     grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 
@@ -105,13 +107,13 @@ span.openFaq{
 }
 
 /* showSections */
-.js section{
+.js [data-section="show"]{
     opacity: 0;
     transform: translateX(-30px);
     transition: all 0.3s ease-in-out;
 }
 
-section.showScroll{
+[data-section="show"].showScroll{
     opacity: 1;
     transform: translate(0);
 }
@@ -155,7 +157,7 @@ section.showScroll{
 
 @media (max-width: 768px){
 
-    body{
+    .grid-content{
         grid-template-columns: 1fr;
     }
 

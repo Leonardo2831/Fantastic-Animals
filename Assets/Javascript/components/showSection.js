@@ -1,5 +1,5 @@
 export default function initShowSection(){
-    const sectionsShow = document.querySelectorAll('[data-scroll="right"]');
+    const sectionsShow = document.querySelectorAll('[data-section="show"]');
     const windowHalf = window.innerHeight * 0.5;
     const nameClass = 'showScroll';
     

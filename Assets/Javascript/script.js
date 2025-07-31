@@ -1,6 +1,6 @@
 function initTabNav(){
-    const animalsTab = document.querySelectorAll('.js-animalsTab picture img');
-    const animalsText = document.querySelectorAll('.js-animalsTab article');
+    const animalsTab = document.querySelectorAll('[data-animals="tab"] picture img');
+    const animalsText = document.querySelectorAll('[data-animals="tab"] article');
     const nameClass = 'activeAnimal';
 
     if(animalsTab.length && animalsText.length){
@@ -28,7 +28,7 @@ function initTabNav(){
 initTabNav();
 
 function initQuestion(){
-    const faqQuestions = document.querySelectorAll('.js-faq dl dt');
+    const faqQuestions = document.querySelectorAll('[data-faq] dl dt');
     const nameClassDD = 'openQuestion';
     const nameClassSpan = 'openFaq';
     
@@ -51,7 +51,7 @@ function initQuestion(){
 initQuestion();
 
 function initScrollSmooth(){
-    const linksHeader = document.querySelectorAll('.js-scrollBehavior a[href^="#"]');
+    const linksHeader = document.querySelectorAll('[data-scroll="behavior"] a[href^="#"]');
 
     if(linksHeader){
 
@@ -74,7 +74,7 @@ function initScrollSmooth(){
 initScrollSmooth()
 
 function initShowSection(){
-    const sectionsShow = document.querySelectorAll('.js-showScroll');
+    const sectionsShow = document.querySelectorAll('[data-scroll="show"]');
     const windowHalf = window.innerHeight * 0.5;
     const nameClass = 'showScroll';
     

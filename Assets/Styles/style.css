@@ -74,17 +74,17 @@ a{
 /* classes javascript */
 
 /* navegação tab */
-.js .js-animalsTab article{
+.js [data-animals="tab"] article{
     display: none;
 }
 
-.js-animalsTab article.activeAnimal{
+[data-animals="tab"] article.activeAnimal{
     display: block;
     animation: showLeft-to-Right 0.5s forwards;
 }
 
 /* openQuestion */
-.js .js-faq dl dd{
+.js [data-faq] dl dd{
     display: none;
 }
 

@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <nav>
-            <ul class="header__menu js-scrollBehavior">
+            <ul class="header__menu" data-scroll="behavior">
                 <li><a href="#animais">Animais</a></li>
                 <li><a href="#faq">Faq</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -21,7 +21,7 @@
 
     <main class="main">
 
-        <section class="grid main__animals js-animalsTab js-showScroll" id="animais">
+        <section class="grid main__animals" data-scroll="show" data-animals="tab" id="animais">
             <h1 class="title">Animais Fantásticos</h1>
 
             <picture class="animals__scroll">
@@ -82,7 +82,7 @@
 
         </section>
 
-        <section class="grid main__faq js-faq js-showScroll" id="faq">
+        <section class="grid main__faq" data-faq data-scroll="show" id="faq">
             <h1 class="title">Faq</h1>
 
             <dl class="faq__questions">
@@ -98,7 +98,7 @@
 
         </section>
 
-        <section class="grid main__contact js-showScroll" id="contato">
+        <section class="grid main__contact" data-scroll="show" id="contato">
             <h1 class="title">Contato</h1>
 
             <figure>

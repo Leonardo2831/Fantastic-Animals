@@ -22,21 +22,31 @@ export default function initToolTip(){
     }
 
     const onMouseLeave = {
-        toolTipBoxElement: '',
         handleEvent(){
             this.toolTipBoxElement.remove();
+            this.element.removeEventListener('mouseleave', onMouseLeave);
+            this.element.removeEventListener('mousemove', onMouseMove);
         }
     }
 
-    function onMouseOver(event){
+    const onMouseMove = {
+        handleEvent(event){
+            const pageY = event.pageY;
+            const pageX = event.pageX;
+
+            this.toolTipBoxElement.style.cssText = `top: ${pageY + 20}px; left: ${pageX + 20}px;`;
+        }
+    }
+
+    function onMouseOver(){
         const toolTipBox = createToolTipBox(this);
 
-        const pageY = event.pageY;
-        const pageX = event.pageX;
-
-        toolTipBox.style.cssText = `top: ${pageY}px; left: ${pageX}px;`;
         onMouseLeave.toolTipBoxElement = toolTipBox;
+        onMouseLeave.element = this;
+        onMouseMove.toolTipBoxElement = toolTipBox
+
         this.addEventListener('mouseleave', onMouseLeave);
+        this.addEventListener('mousemove', onMouseMove);
     }
 
     toolsTip.forEach((toolTip) => {

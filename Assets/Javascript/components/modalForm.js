@@ -6,11 +6,18 @@ export default function initModalForm(){
     const modal =  select.Single('[data-modal]');
     const buttonsModal = select.All('[data-button-modal]');
 
-    function modalFunction(){
-        modal.dataset.modal = (modal.dataset.modal === 'disabled') ? 'active' : 'disabled';
+    function modalFunction(event){
+        event.preventDefault();
+        
+        if(event.target === modal || event.target === buttonsModal[1]){
+            modal.dataset.modal = 'disabled';
+        } else {
+            modal.dataset.modal = 'active'
+        }
     }
     
     buttonsModal.forEach((button) => {
         button.addEventListener('click', modalFunction);
     });
+    modal.addEventListener('click', modalFunction);
 }

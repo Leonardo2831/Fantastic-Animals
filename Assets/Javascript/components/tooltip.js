@@ -1,4 +1,4 @@
-import { Select } from './utilitaryFunctions.js';
+import { Select } from './utilitarianFunctions.js';
 
 export default function initToolTip(){
     const select = new Select();

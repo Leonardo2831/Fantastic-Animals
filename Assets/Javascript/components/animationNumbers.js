@@ -1,4 +1,4 @@
-import { Select } from "./utilitaryFunctions.js";
+import { Select } from "./utilitarianFunctions.js";
 
 export default function initAnimationNumbers(){
     const select = new Select();  
@@ -9,11 +9,11 @@ export default function initAnimationNumbers(){
         function animationNumber(){
             numbers.forEach((number) => {
                 const totalNumber = Number(number.textContent);
-                const incremento = Math.floor(totalNumber / 100);
+                const increment = Math.floor(totalNumber / 100);
 
                 let start = 0;
                 const timer = setInterval(() => {
-                    start = start + incremento;
+                    start = start + increment;
                     number.textContent = start;
 
                     if(start > totalNumber) {
@@ -27,8 +27,8 @@ export default function initAnimationNumbers(){
         const observerTarget = select.Single('[data-observer]');
         const observer = new MutationObserver(handleMutation);
 
-        function handleMutation(mutantion){
-            if(mutantion[0].target.classList.contains('showScroll')){
+        function handleMutation(mutation){
+            if(mutation[0].target.classList.contains('showScroll')){
                 animationNumber();
                 observer.disconnect();
             }

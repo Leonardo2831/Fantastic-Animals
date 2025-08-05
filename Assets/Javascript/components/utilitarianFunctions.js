@@ -2,20 +2,20 @@
 export class Select {
     /**
      * 
-     * @param {String} seletor - Seletor css do elemento
+     * @param {String} selector - Seletor css do elemento
      * @returns {Element | null} - Elemento selecionado ou `null`
      */
-    Single(seletor){
-        return document.querySelector(seletor);
+    Single(selector){
+        return document.querySelector(selector);
     }
 
     /**
      * 
-     * @param {String} seletor - Seletor css dos elementos
+     * @param {String} selector - Seletor css dos elementos
      * @returns {NodeListOf<HTMLElement>} - NodeList com os elementos ou um array vazio
      */
-    All(seletor){
-        return document.querySelectorAll(seletor);
+    All(selector){
+        return document.querySelectorAll(selector);
     }
 }
 

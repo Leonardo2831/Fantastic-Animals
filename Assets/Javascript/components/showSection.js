@@ -12,10 +12,13 @@ export default function initShowSection(){
     if(sectionsShow.length){
         function showScroll(){
             sectionsShow.forEach((sectionShow)=>{
-                const sectionTopWindow = sectionShow.getBoundingClientRect().top - windowHalf;
+                const sectionTop = sectionShow.getBoundingClientRect().top;
+                const sectionVisible = sectionTop - windowHalf;
         
-                if(sectionTopWindow < 0){
+                if(sectionVisible < 0){
                     sectionShow.classList.add(nameClass);
+                } else if(sectionShow.classList.contains(nameClass)){
+                    sectionShow.classList.remove(nameClass);
                 }
             });
         }

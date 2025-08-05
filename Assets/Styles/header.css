@@ -137,10 +137,6 @@
         box-shadow: 2px 2px 2px 0 var(--shadow);
     }
 
-    /* .js [data-menu="list"].active{
-        display: block;
-    } */
-
     .js .dropdown-menu{
         position: static;
         border: none;
@@ -152,5 +148,9 @@
 
     .js [data-menu="list"] > li:has(.dropdown-menu) p{
         padding: 10px 15px;
+    }
+
+    .js [data-menu="list"].active{
+        display: block;
     }
 }

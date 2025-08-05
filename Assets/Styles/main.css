@@ -108,6 +108,29 @@
     margin: 0 0 0.5rem 30px;
 }
 
+/* numbers */
+.numbers-grid{
+    grid-column: 2 / 4;
+
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.number-animal h3{
+    font-family: var(--font-secondary);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.number-animal span{
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    color: var(--orange);
+}
+
 /* contact */
 .main__contact figure{
     grid-column: 2;
@@ -153,11 +176,24 @@
 
 @media (max-width: 768px){
 
-    .animals__scroll{
+    .animals__scroll,
+    .numbers-grid{
         grid-column: 1;
     }
 
-    .faq__questions, .main__contact figure, .main__contact ul{
+    .faq__questions, 
+    .main__contact figure, 
+    .main__contact ul{
         grid-column: 1 / 4;
+    }
+}
+
+@media (max-width: 480px){
+    .number-animal h3{
+        font-size: 1.7rem;
+    }
+
+    .number-animal span{
+        font-size: 1.3rem;
     }
 }

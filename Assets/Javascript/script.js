@@ -6,6 +6,7 @@ import initInfoContact from './components/infoContact.js';
 import initModalForm from './components/modalForm.js';
 import initToolTip from './components/tooltip.js';
 import initDropDownNav from './components/dropDownNav.js';
+import initMenuMobile from './components/menu-mobile.js';
 
 initScrollSmooth();
 initShowSection();
@@ -15,3 +16,4 @@ initInfoContact();
 initModalForm();
 initToolTip();
 initDropDownNav();
+initMenuMobile();

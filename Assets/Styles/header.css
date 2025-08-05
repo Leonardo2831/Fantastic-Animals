@@ -6,7 +6,7 @@
     background-color: var(--yellow);
 }
 
-.header nav ul{
+.header__menu{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -14,7 +14,7 @@
     padding: 5px;
 }
 
-.header nav > ul li{
+.header__menu li{
     padding: 15px;
 
     font-weight: bold;
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-.header nav > ul > li:last-of-type::after{
+.header__menu > li:last-of-type::after{
     content: '►';
     display: inline-block;
     margin: 0 0 0 10px;
@@ -78,7 +78,7 @@
 }
 
 /* menu mobile */
-[data-mobile="menu"]{
+[data-mobile="button"]{
     display: none;
 }
 
@@ -88,7 +88,7 @@
         margin: 0 0 2rem 0;
     }
 
-    .js [data-mobile="menu"]{
+    .js [data-mobile="button"]{
         display: flex;
         align-items: center;
         padding: 8px 16px;
@@ -107,7 +107,7 @@
         cursor: pointer;
     }
 
-    .js [data-mobile="menu"]::before{
+    .js [data-mobile="button"]::before{
         content: '';
         display: inline-block;
         height: 2px;
@@ -119,11 +119,12 @@
         /* macete para criar as outras 3 barras */
         box-shadow: 0 4px var(--color-white),
                     0 -4px var(--color-white);
+        
+        transition: transform 0.3s;
     }
 
-    .js [data-menu="list"]{
-        /* display: none; */
-        display: block;
+    .js [data-mobile="list"]{
+        display: none;
         width: 100%;
         max-width: 160px;
         padding: 60px 0 20px 0;
@@ -142,15 +143,20 @@
         border: none;
     }
 
-    .js [data-menu="list"] > li:has(.dropdown-menu){
+    .js [data-mobile="list"] > li:has(.dropdown-menu){
         padding: 0;
     }
 
-    .js [data-menu="list"] > li:has(.dropdown-menu) p{
+    .js [data-mobile="list"] > li:has(.dropdown-menu) p{
         padding: 10px 15px;
     }
 
-    .js [data-menu="list"].active{
+    .js [data-mobile="button"].activeMobile ~ [data-mobile="list"]{
         display: block;
+        animation: showLeft-to-Right 0.3s forwards;
+    }
+
+    .js [data-mobile="button"].activeMobile::before{
+        transform: rotate(90deg);
     }
 }

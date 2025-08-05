@@ -1,6 +1,6 @@
 import { Select } from "./utilitaryFunctions.js";
 
-export default function initInfoContact(){
+export default function initInfoOperation(){
     const select = new Select();
 
     const date = new Date();

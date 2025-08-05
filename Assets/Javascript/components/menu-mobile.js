@@ -1,5 +1,4 @@
-import { Select } from './utilitaryFunctions.js';
-import clickOutside from './clickOutside.js';
+import { Select, clickOutside } from "./utilitaryFunctions.js";
 
 export default function initMenuMobile(){
     const select = new Select();

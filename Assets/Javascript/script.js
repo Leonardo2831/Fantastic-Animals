@@ -7,6 +7,7 @@ import initModalForm from './components/modalForm.js';
 import initToolTip from './components/tooltip.js';
 import initDropDownNav from './components/dropDownNav.js';
 import initMenuMobile from './components/menu-mobile.js';
+import initAnimationNumbers from './components/animationNumbers.js';
 
 initScrollSmooth();
 initShowSection();
@@ -17,3 +18,4 @@ initModalForm();
 initToolTip();
 initDropDownNav();
 initMenuMobile();
+initAnimationNumbers();

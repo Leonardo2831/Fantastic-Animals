@@ -40,7 +40,8 @@
     display: none;
 }
 
-[data-dropdown]:hover .dropdown-menu{
+/* [data-dropdown]:hover .dropdown-menu, */
+[data-dropdown="active"] .dropdown-menu{
     display: block;
 
     animation: showBottom-to-Top 0.3s forwards;
@@ -76,9 +77,80 @@
     color: var(--color-white);
 }
 
+/* menu mobile */
+[data-mobile="menu"]{
+    display: none;
+}
+
 @media(max-width: 768px){
     
     .header{
         margin: 0 0 2rem 0;
+    }
+
+    .js [data-mobile="menu"]{
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        margin: 10px;
+
+        color: var(--color-white);
+        background-color: var(--color-black);
+        border-radius: 4px;
+
+        text-transform: uppercase;
+        font-family: var(--font-primary);
+        font-weight: bold;
+
+        position: relative;
+        z-index: 100;
+        cursor: pointer;
+    }
+
+    .js [data-mobile="menu"]::before{
+        content: '';
+        display: inline-block;
+        height: 2px;
+        width: 12px;
+        margin-right: 8px;
+
+        background-color: var(--color-white);
+
+        /* macete para criar as outras 3 barras */
+        box-shadow: 0 4px var(--color-white),
+                    0 -4px var(--color-white);
+    }
+
+    .js [data-menu="list"]{
+        /* display: none; */
+        display: block;
+        width: 100%;
+        max-width: 160px;
+        padding: 60px 0 20px 0;
+
+        background-color: var(--yellow);
+        
+        position: absolute;
+        top: 0;
+        z-index: 50;
+
+        box-shadow: 2px 2px 2px 0 var(--shadow);
+    }
+
+    /* .js [data-menu="list"].active{
+        display: block;
+    } */
+
+    .js .dropdown-menu{
+        position: static;
+        border: none;
+    }
+
+    .js [data-menu="list"] > li:has(.dropdown-menu){
+        padding: 0;
+    }
+
+    .js [data-menu="list"] > li:has(.dropdown-menu) p{
+        padding: 10px 15px;
     }
 }

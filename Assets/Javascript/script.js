@@ -7,7 +7,8 @@ import initModalForm from './components/modalForm.js';
 import initToolTip from './components/tooltip.js';
 import initDropDownNav from './components/dropDownNav.js';
 import initMenuMobile from './components/menu-mobile.js';
-import initAnimationNumbers from './components/animationNumbers.js';
+import initFetchAnimals from './components/fetchAnimals.js';
+import initBitCoinFetch from './components/bitcoin.js';
 
 initScrollSmooth();
 initShowSection();
@@ -18,4 +19,5 @@ initModalForm();
 initToolTip();
 initDropDownNav();
 initMenuMobile();
-initAnimationNumbers();
+initFetchAnimals();
+initBitCoinFetch();

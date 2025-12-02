@@ -1,12 +1,10 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initAnimationNumbers(){
-    const select = new Select();  
+export default function initAnimationNumbers() {
+    const numbers = Select.All("[data-number]");
 
-    const numbers = select.All('[data-number]');
-
-    if(numbers){
-        function animationNumber(){
+    if(numbers) {
+        function animationNumber() {
             numbers.forEach((number) => {
                 const totalNumber = Number(number.textContent);
                 const increment = Math.floor(totalNumber / 100);
@@ -24,16 +22,16 @@ export default function initAnimationNumbers(){
             });
         }
 
-        const observerTarget = select.Single('[data-observer]');
+        const observerTarget = Select.Single("[data-observer]");
         const observer = new MutationObserver(handleMutation);
 
-        function handleMutation(mutation){
-            if(mutation[0].target.classList.contains('showScroll')){
+        function handleMutation(mutation) {
+            if(mutation[0].target.classList.contains("showScroll")) {
                 animationNumber();
                 observer.disconnect();
             }
         }
 
-        observer.observe(observerTarget, {attributes: true});
+        observer.observe(observerTarget, { attributes: true });
     }
 }

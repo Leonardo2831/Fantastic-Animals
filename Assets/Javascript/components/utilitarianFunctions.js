@@ -5,7 +5,7 @@ export class Select {
      * @param {String} selector - Seletor css do elemento
      * @returns {Element | null} - Elemento selecionado ou `null`
      */
-    Single(selector){
+    static Single(selector){
         return document.querySelector(selector);
     }
 
@@ -14,7 +14,7 @@ export class Select {
      * @param {String} selector - Seletor css dos elementos
      * @returns {NodeListOf<HTMLElement>} - NodeList com os elementos ou um array vazio
      */
-    All(selector){
+    static All(selector){
         return document.querySelectorAll(selector);
     }
 }

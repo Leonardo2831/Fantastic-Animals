@@ -1,33 +1,31 @@
-import { Select } from './utilitarianFunctions.js';
-import initAnimationNumbers from './animationNumbers.js';
+import { Select } from "./utilitarianFunctions.js";
+import initAnimationNumbers from "./animationNumbers.js";
 
-export default function initFetchAnimals(){
-    const select = new Select();
-
-    async function fetchAnimals(url){
+export default function initFetchAnimals() {
+    async function fetchAnimals(url) {
         try {
             const animalsResponse = await (await fetch(url)).json();
-            const contentAnimals = select.Single('[data-animals="number"]');
-            
+            const contentAnimals = Select.Single('[data-animals="number"]');
+
             animalsResponse.animals.forEach((animal) => {
                 const divAnimalCompleted = createAnimal(animal);
                 contentAnimals.appendChild(divAnimalCompleted);
             });
-            
+
             initAnimationNumbers();
-        } catch(error){
+        } catch (error) {
             console.log(Error(error));
         }
     }
 
-    function createAnimal(animal){
-        const divAnimal = document.createElement('div');
+    function createAnimal(animal) {
+        const divAnimal = document.createElement("div");
         const htmlAnimal = `
             <h3>${animal.specie}</h3>
             <span data-number>${animal.total}</span>
         `;
 
-        const classDivStyle = 'number-animal'
+        const classDivStyle = "number-animal";
 
         divAnimal.classList.add(classDivStyle);
         divAnimal.innerHTML = htmlAnimal;
@@ -35,5 +33,5 @@ export default function initFetchAnimals(){
         return divAnimal;
     }
 
-    fetchAnimals('Assets/data/animals.json');
+    fetchAnimals("Assets/data/animals.json");
 }

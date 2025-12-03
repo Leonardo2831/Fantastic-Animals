@@ -1,25 +1,34 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initTabNav() {
-    const animalsTab = Select.All('[data-animals="tab"] picture img');
-    const animalsText = Select.All('[data-animals="tab"] article');
-    const nameClass = "activeAnimal";
-
-    function navigationTab(index) {
-        animalsText.forEach((animalText) => {
-            animalText.classList.remove(nameClass);
-        });
-
-        animalsText[index].classList.add(nameClass);
+export default class TabNav {
+    constructor(listImages, listSections, classActive){
+        this.listImages = Select.All(listImages);
+        this.listSections = Select.All(listSections);
+        this.classActive = classActive;
     }
 
-    if(animalsTab.length && animalsText.length) {
-        animalsText[0].classList.add(nameClass);
+    navigationTab(index){
+        this.listSections.forEach((listSection) => {
+            listSection.classList.remove(this.classActive);
+        });
 
-        animalsTab.forEach((animalTab, index) => {
-            animalTab.addEventListener("click", () => {
-                navigationTab(index);
+        this.listSections[index].classList.add(this.classActive);
+    }
+
+    addEventTabNav(){
+        this.listImages.forEach((listImage, index) => {
+            listImage.addEventListener("click", () => {
+                this.navigationTab(index);
             });
         });
+    }
+
+    init(){
+        if(this.listImages.length && this.listSections.length) {
+            this.listSections[0].classList.add(this.classActive);
+            this.addEventTabNav();
+        }
+
+        return this;
     }
 }

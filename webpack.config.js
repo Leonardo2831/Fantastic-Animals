@@ -8,7 +8,12 @@ module.exports = {
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, './'),
+            directory: path.join(__dirname, "./"),
+        },
+        devMiddleware: {
+            writeToDisk: (filePath) => {
+                return !/hot-update/.test(filePath);
+            },
         },
         port: 3000,
         open: true,

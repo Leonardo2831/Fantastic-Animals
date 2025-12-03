@@ -1,23 +1,36 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initModalForm() {
-    const modal = Select.Single("[data-modal]");
-    const buttonsModal = Select.All("[data-button-modal]");
+export default class ModalForm {
+    constructor(modal, buttonsModal){
+        this.modal = Select.Single(modal);
+        this.buttonsModal = Select.All(buttonsModal);
 
-    function modalFunction(event) {
+        this.modalFunction = this.modalFunction.bind(this);
+    }
+
+    modalFunction(event) {
         event.preventDefault();
 
-        if(event.target === modal || event.target === buttonsModal[1]){
-            modal.dataset.modal = "disabled";
+        if(event.target === this.modal || event.target === this.buttonsModal[1]){
+            this.modal.dataset.modal = "disabled";
         } else {
-            modal.dataset.modal = "active";
+            this.modal.dataset.modal = "active";
         }
     }
 
-    if(modal && buttonsModal.length) {
-        buttonsModal.forEach((button) => {
-            button.addEventListener("click", modalFunction);
+    addEventModal(){
+        this.buttonsModal.forEach((button) => {
+            button.addEventListener("click", this.modalFunction);
         });
-        modal.addEventListener("click", modalFunction);
+
+        this.modal.addEventListener("click", this.modalFunction);
+    }
+
+    init(){
+        if(this.modal && this.buttonsModal.length) {
+            this.addEventModal();
+        }
+
+        return this;
     }
 }

@@ -4,7 +4,7 @@ import TabNav from './components/tabNav.js';
 
 import initShowSection from './components/showSection.js';
 import initInfoOperation from './components/infoContact.js';
-import initModalForm from './components/modalForm.js';
+import ModalForm from './components/modalForm.js';
 import initToolTip from './components/tooltip.js';
 import initDropDownNav from './components/dropDownNav.js';
 import initMenuMobile from './components/menu-mobile.js';
@@ -27,9 +27,13 @@ questions.init();
 const tabNav = new TabNav("[data-animals='tab'] picture img", '[data-animals="tab"] article', "activeAnimal");
 tabNav.init();
 
+// modal form
+const modalForm = new ModalForm('[data-modal]', '[data-button-modal]');
+modalForm.init();
+
 initShowSection();
 initInfoOperation();
-initModalForm();
+ModalForm();
 initToolTip();
 initDropDownNav();
 initMenuMobile();

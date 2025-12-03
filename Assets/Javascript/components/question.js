@@ -1,23 +1,32 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initQuestion() {
-    const faqQuestions = Select.All("[data-faq] dl dt");
-    const nameClassDD = "openQuestion";
-    const nameClassSpan = "openFaq";
-
-    function openQuestion() {
-        const questionEvent = this;
-
-        questionEvent.nextElementSibling.classList.toggle(nameClassDD);
-        questionEvent.children[0].classList.toggle(nameClassSpan);
+export default class Questions {
+    constructor(list, classActive){
+        this.list = Select.All(list);
+        this.classActive = classActive;
     }
 
-    if(faqQuestions.length) {
-        faqQuestions[0].nextElementSibling.classList.add(nameClassDD);
-        faqQuestions[0].children[0].classList.add(nameClassSpan);
+    toggleQuestion(question){
+        question.nextElementSibling.classList.toggle(this.classActive);
+        question.children[0].classList.toggle(this.classActive);
+    }
 
-        faqQuestions.forEach((faqQuestion) => {
-            faqQuestion.addEventListener("click", openQuestion);
-        });
+    addEventQuestion(){
+        if(this.list.length) {
+            this.list.forEach((question) => {
+                question.addEventListener("click", () => {
+                    this.toggleQuestion(question);
+                });
+            });
+        }
+    }
+
+    init(){
+        if(this.list.length){
+            this.toggleQuestion(this.list[0]);
+            this.addEventQuestion();
+        }
+        
+        return this;
     }
 }

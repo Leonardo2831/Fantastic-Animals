@@ -1,11 +1,11 @@
 import ScrollSmooth from './components/scrollSmooth.js';
 import Questions from './components/question.js';
 import TabNav from './components/tabNav.js';
+import ModalForm from './components/modalForm.js';
+import ToolTip from './components/tooltip.js';
 
 import initShowSection from './components/showSection.js';
 import initInfoOperation from './components/infoContact.js';
-import ModalForm from './components/modalForm.js';
-import initToolTip from './components/tooltip.js';
 import initDropDownNav from './components/dropDownNav.js';
 import initMenuMobile from './components/menu-mobile.js';
 import initFetchAnimals from './components/fetchAnimals.js';
@@ -30,6 +30,10 @@ tabNav.init();
 // modal form
 const modalForm = new ModalForm('[data-modal]', '[data-button-modal]');
 modalForm.init();
+
+// toolTip
+const toolTip = new ToolTip("[data-tooltip]");
+toolTip.init();
 
 initShowSection();
 initInfoOperation();

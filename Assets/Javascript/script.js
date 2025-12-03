@@ -1,4 +1,4 @@
-import initScrollSmooth from './components/scrollSmooth.js';
+import ScrollSmooth from './components/scrollSmooth.js';
 import initShowSection from './components/showSection.js';
 import initTabNav from './components/tabNav.js';
 import initQuestion from './components/question.js';
@@ -10,7 +10,13 @@ import initMenuMobile from './components/menu-mobile.js';
 import initFetchAnimals from './components/fetchAnimals.js';
 import initBitCoinFetch from './components/bitcoin.js';
 
-initScrollSmooth();
+const optionsScroll = {
+    behavior: "smooth",
+    block: "start",
+};
+const scrollSmooth = new ScrollSmooth("[data-scroll='behavior'] a[href^='#']", optionsScroll);
+scrollSmooth.init();
+
 initShowSection();
 initTabNav();
 initQuestion();

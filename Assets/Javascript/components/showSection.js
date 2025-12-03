@@ -7,20 +7,20 @@ export default function initShowSection() {
 
     sectionsShow[0].classList.add(nameClass);
 
-    if (sectionsShow.length) {
-        function showScroll() {
-            sectionsShow.forEach((sectionShow) => {
-                const sectionTop = sectionShow.getBoundingClientRect().top;
-                const sectionVisible = sectionTop - windowHalf;
+    function showScroll() {
+        sectionsShow.forEach((sectionShow) => {
+            const sectionTop = sectionShow.getBoundingClientRect().top;
+            const sectionVisible = sectionTop - windowHalf;
 
-                if (sectionVisible < 0) {
+            if(sectionVisible < 0){
                 sectionShow.classList.add(nameClass);
-                } else if (sectionShow.classList.contains(nameClass)) {
+            } else if (sectionShow.classList.contains(nameClass)) {
                 sectionShow.classList.remove(nameClass);
-                }
-            });
-        }
+            }
+        });
+    }
 
+    if(sectionsShow.length){
         window.addEventListener("scroll", showScroll);
     }
 }

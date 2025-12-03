@@ -24,24 +24,21 @@ export class Select {
  * @param {Element | null} element - elemento que foi clicado
  * @param {Function} callback 
  */
-export function clickOutside(element, events, callback){
+export function clickOutside(element, eventUser, callback){
     const html = document.documentElement;
     const dataOutside = 'data-outside';
 
     if(!element.hasAttribute(dataOutside)){
-        events.forEach((userEvent) => {
-            setTimeout(() => {html.addEventListener(userEvent, handleOutside);});
+        setTimeout(() => {
+            html.addEventListener(eventUser, handleOutside);
         });
-            
         element.setAttribute(dataOutside, '');
     }
         
     function handleOutside(event){
         if(!element.contains(event.target)){
             element.removeAttribute(dataOutside);
-            events.forEach((userEvent) => {
-                html.removeEventListener(userEvent, handleOutside);
-            });
+            html.removeEventListener(eventUser, handleOutside);
             callback();
         }
     }

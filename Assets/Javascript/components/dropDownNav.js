@@ -5,14 +5,15 @@ export default function initDropDownNav() {
 
     function handleClick() {
         this.dataset.dropdown = this.dataset.dropdown = "active";
+        
         clickOutside(this, ["touchstart", "click"], () => {
-        this.dataset.dropdown = "";
+            this.dataset.dropdown = "";
         });
     }
 
     dropDowns.forEach((dropDown) => {
         ["touchstart", "click"].forEach((userEvent) => {
-        dropDown.addEventListener(userEvent, handleClick);
+            dropDown.addEventListener(userEvent, handleClick);
         });
     });
 }

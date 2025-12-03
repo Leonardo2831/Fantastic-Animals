@@ -4,17 +4,17 @@ export default function initModalForm() {
     const modal = Select.Single("[data-modal]");
     const buttonsModal = Select.All("[data-button-modal]");
 
-    if(modal && buttonsModal.length) {
-        function modalFunction(event) {
-            event.preventDefault();
+    function modalFunction(event) {
+        event.preventDefault();
 
-            if(event.target === modal || event.target === buttonsModal[1]) {
-                modal.dataset.modal = "disabled";
-            } else {
-                modal.dataset.modal = "active";
-            }
+        if(event.target === modal || event.target === buttonsModal[1]){
+            modal.dataset.modal = "disabled";
+        } else {
+            modal.dataset.modal = "active";
         }
+    }
 
+    if(modal && buttonsModal.length) {
         buttonsModal.forEach((button) => {
             button.addEventListener("click", modalFunction);
         });

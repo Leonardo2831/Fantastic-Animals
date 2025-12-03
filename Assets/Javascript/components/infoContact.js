@@ -9,8 +9,8 @@ export default function initInfoOperation() {
 
     const openInfo = Select.Single('[data-open="content"] ul li:last-of-type');
 
-    if(openInfo) {
-        if(closeDay || closeHours) {
+    if(openInfo){
+        if(closeDay || closeHours){
             openInfo.dataset.open = false;
         } else {
             openInfo.dataset.open = true;

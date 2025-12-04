@@ -1,19 +1,30 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initInfoOperation() {
-    const date = new Date();
-    const dayWeek = date.getDay();
-    const hours = date.getHours();
-    const closeDay = dayWeek === 6 || dayWeek === 0;
-    const closeHours = hours <= 8 || hours >= 18;
+export default class InfoOperation {
+    constructor(itemInfoOperation){
+        this.itemInfoOperation = Select.Single(itemInfoOperation);
 
-    const openInfo = Select.Single('[data-open="content"] ul li:last-of-type');
+        this.date = new Date();
+        this.dayWeek = this.date.getDay();
+        this.hours = this.date.getUTCHours() - 3;
 
-    if(openInfo){
-        if(closeDay || closeHours){
-            openInfo.dataset.open = false;
+        this.closeDay = this.dayWeek === 6 || this.dayWeek === 0;
+        this.closeHours = this.hours <= 8 || this.hours >= 18;
+    }
+
+    addInfoOperation(){
+        if(this.closeDay || this.closeHours){
+            this.itemInfoOperation.dataset.open = false;
         } else {
-            openInfo.dataset.open = true;
+            this.itemInfoOperation.dataset.open = true;
         }
+    }
+
+    init(){
+        if(this.itemInfoOperation){
+            this.addInfoOperation();
+        }
+
+        return this;
     }
 }

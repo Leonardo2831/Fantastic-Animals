@@ -4,12 +4,12 @@ import TabNav from "./components/tabNav.js";
 import ModalForm from "./components/modalForm.js";
 import ToolTip from "./components/tooltip.js";
 import createAnimals from "./components/fetchAnimals.js";
+import fetchBitcoin from "./components/bitcoin.js";
 
 import initShowSection from "./components/showSection.js";
 import initInfoOperation from "./components/infoContact.js";
 import initDropDownNav from "./components/dropDownNav.js";
 import initMenuMobile from "./components/menu-mobile.js";
-import initBitCoinFetch from "./components/bitcoin.js";
 
 // scroll
 const optionsScroll = {
@@ -49,4 +49,4 @@ initShowSection();
 initInfoOperation();
 initDropDownNav();
 initMenuMobile();
-initBitCoinFetch();
+fetchBitcoin("https://blockchain.info/ticker", '[data-value="bitcoin"]');

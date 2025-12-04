@@ -8,7 +8,7 @@ import fetchBitcoin from "./components/bitcoin.js";
 import ShowSection from "./components/showSection.js";
 import DropDownNav from "./components/dropDownNav.js";
 import MenuMobile from "./components/menu-mobile.js";
-import initInfoOperation from "./components/infoContact.js";
+import InfoOperation from "./components/infoContact.js";
 
 // scroll
 const optionsScroll = {
@@ -60,4 +60,6 @@ dropDownNav.init();
 const menuMobile = new MenuMobile('[data-mobile="button"]', '[data-mobile="list"]', "activeMobile");
 menuMobile.init();
 
-initInfoOperation();
+// operation
+const infoOperation = new InfoOperation('[data-open="content"] ul li:last-of-type');
+infoOperation.init();

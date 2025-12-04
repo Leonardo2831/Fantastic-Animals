@@ -2,23 +2,37 @@ import { Select, clickOutside } from "./utilitarianFunctions.js";
 
 
 
-export default function initMenuMobile() {
-    const hasTouch = !('ontouchstart' in window);
+export default class MenuMobile {
+    constructor(buttonMobile, menuMobile, classActive){
+        const hasTouch = !!(window.ontouchstart);
 
-    const eventUser = hasTouch ? "touchstart" : "click";
-    const buttonMobile = Select.Single('[data-mobile="button"]');
-    const listMenu = Select.Single('[data-mobile="list"]');
+        this.eventUser = hasTouch ? "touchstart" : "click";
+        this.buttonMobile = Select.Single(buttonMobile);
+        this.listMenu = Select.Single(menuMobile);
+        this.classActive = classActive;
 
-    function openMenuMobile() {
-        const classActiveMenu = "activeMobile";
-        buttonMobile.classList.toggle(classActiveMenu);
+        this.openMenuMobile = this.openMenuMobile.bind(this);
+    }
 
-        clickOutside(listMenu, eventUser, () => {
-            buttonMobile.classList.remove(classActiveMenu);
+    openMenuMobile() {
+        this.buttonMobile.classList.toggle(this.classActive);
+
+        clickOutside(this.listMenu, this.eventUser, () => {
+            this.buttonMobile.classList.remove(this.classActive);
         });
     }
 
-    if(buttonMobile){
-        buttonMobile.addEventListener(eventUser, openMenuMobile);
+    addEventOpenMenu(){
+        console.log(this.buttonMobile, this.eventUser);
+        
+        this.buttonMobile.addEventListener(this.eventUser, this.openMenuMobile);
+    }
+
+    init(){
+        if(this.buttonMobile){
+            this.addEventOpenMenu();
+        }
+
+        return this;
     }
 }

@@ -7,9 +7,8 @@ import createAnimals from "./components/fetchAnimals.js";
 import fetchBitcoin from "./components/bitcoin.js";
 import ShowSection from "./components/showSection.js";
 import DropDownNav from "./components/dropDownNav.js";
-
+import MenuMobile from "./components/menu-mobile.js";
 import initInfoOperation from "./components/infoContact.js";
-import initMenuMobile from "./components/menu-mobile.js";
 
 // scroll
 const optionsScroll = {
@@ -57,5 +56,8 @@ showSection.init();
 const dropDownNav = new DropDownNav("[data-dropdown]", "active");
 dropDownNav.init();
 
+// menu mobile
+const menuMobile = new MenuMobile('[data-mobile="button"]', '[data-mobile="list"]', "activeMobile");
+menuMobile.init();
+
 initInfoOperation();
-initMenuMobile();

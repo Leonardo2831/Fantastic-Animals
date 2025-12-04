@@ -1,9 +1,12 @@
 import { Select, clickOutside } from "./utilitarianFunctions.js";
 
-export default class initDropDownNav {
+export default class DropDownNav {
     constructor(dropDowns, datasetValue){
         this.dropDowns = Select.All(dropDowns);
         this.datasetValue = datasetValue;
+
+        const hasTouch = !!(window.ontouchstart);
+        this.eventUser = hasTouch ? "touchstart" : "click";
 
         this.handleClick = this.handleClick.bind(this);
     }
@@ -26,7 +29,8 @@ export default class initDropDownNav {
     }
 
     init(){
-        this.hasTouch = !('ontouchstart' in window);
-        this.eventUser = this.hasTouch ? "touchstart" : "click";
+        this.addEventDropDown();
+
+        return this;
     }
 }

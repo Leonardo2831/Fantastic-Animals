@@ -16,10 +16,7 @@ const optionsScroll = {
     behavior: "smooth",
     block: "start",
 };
-const scrollSmooth = new ScrollSmooth(
-    "[data-scroll='behavior'] a[href^='#']",
-    optionsScroll
-);
+const scrollSmooth = new ScrollSmooth("[data-scroll='behavior'] a[href^='#']", optionsScroll);
 scrollSmooth.init();
 
 // questions
@@ -27,11 +24,7 @@ const questions = new Questions("[data-faq] dl dt", "openQuestion");
 questions.init();
 
 // tabNav
-const tabNav = new TabNav(
-    "[data-animals='tab'] picture img",
-    '[data-animals="tab"] article',
-    "activeAnimal"
-);
+const tabNav = new TabNav("[data-animals='tab'] picture img", '[data-animals="tab"] article', "activeAnimal");
 tabNav.init();
 
 // modal form
@@ -66,5 +59,5 @@ const infoOperation = new InfoOperation('[data-open="content"] ul li:last-of-typ
 infoOperation.init();
 
 // slide
-const slide = new Slide('[data-wrapper="slide"]', '[data-slide="images"]');
+const slide = new Slide('[data-slide="images"]', '[data-wrapper="slide"]');
 slide.init();

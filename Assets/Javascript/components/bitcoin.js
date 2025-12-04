@@ -1,10 +1,10 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initBitCoinFetch() {
-    fetch("https://blockchain.info/ticker")
+export default function fetchBitcoin(url, valueBitcoin) {
+    fetch(url)
         .then((response) => response.json())
         .then((bitcoin) => {
-            const contentValueBitcoin = Select.Single('[data-value="bitcoin"]');
+            const contentValueBitcoin = Select.Single(valueBitcoin);
 
             contentValueBitcoin.textContent = (1000 / bitcoin.BRL.sell).toFixed(4);
         })

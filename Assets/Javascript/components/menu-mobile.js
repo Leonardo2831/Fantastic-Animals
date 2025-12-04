@@ -23,8 +23,6 @@ export default class MenuMobile {
     }
 
     addEventOpenMenu(){
-        console.log(this.buttonMobile, this.eventUser);
-        
         this.buttonMobile.addEventListener(this.eventUser, this.openMenuMobile);
     }
 

@@ -1,9 +1,17 @@
 import { Select } from "./utilitarianFunctions.js";
 
-function animationNumber() {
-    const numbers = Select.All("[data-number]");
+export default class AnimationNumbers {
+    constructor(numbers, observerTarget, observerClass){
+        this.numbers = Select.All(numbers);
+        this.observerTarget = Select.Single(observerTarget);
+        this.observerClass = observerClass;
 
-    numbers.forEach((number) => {
+        this.handleMutation = this.handleMutation.bind(this);
+        this.animationNumber = this.animationNumber.bind(this);
+    }
+
+    // Posso animar qualquer numero do site apenas com essa função
+    static incrementNumber(number) {
         const totalNumber = Number(number.textContent);
         const increment = Math.floor(totalNumber / 100);
 
@@ -17,23 +25,31 @@ function animationNumber() {
                 clearInterval(timer);
             }
         }, 25 * Math.random());
-    });
-}
-
-function handleMutation(mutation, observer) {
-    if(mutation[0].target.classList.contains("showScroll")) {
-        animationNumber();
-        observer.disconnect();
     }
-}
 
-export default function initAnimationNumbers() {
-    const numbers = Select.All("[data-number]");
+    animationNumber() {
+        this.numbers.forEach((number) => {
+            this.constructor.incrementNumber(number);
+        });
+    }
 
-    if(numbers){
-        const observerTarget = Select.Single("[data-observer]");
-        const observer = new MutationObserver(handleMutation);
+    handleMutation(mutation, observer) {
+        if(mutation[0].target.classList.contains(this.observerClass)) {
+            this.animationNumber();
+            observer.disconnect();
+        }
+    }
 
-        observer.observe(observerTarget, { attributes: true });
+    addObserver() {
+        this.observer = new MutationObserver(this.handleMutation);
+        this.observer.observe(this.observerTarget, { attributes: true });
+    }
+
+    init(){
+        if(this.numbers.length){
+            this.addObserver();
+        }
+
+        return this;
     }
 }

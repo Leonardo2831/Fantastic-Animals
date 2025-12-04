@@ -1,5 +1,5 @@
 import { Select } from "./utilitarianFunctions.js";
-import initAnimationNumbers from "./animationNumbers.js";
+import AnimationNumbers from "./animationNumbers.js";
 
 export default function initFetchAnimals() {
     async function fetchAnimals(url) {
@@ -12,7 +12,8 @@ export default function initFetchAnimals() {
                 contentAnimals.appendChild(divAnimalCompleted);
             });
 
-            initAnimationNumbers();
+            const animationNumbers = new AnimationNumbers("[data-number]", "[data-observer]", "showScroll");
+            animationNumbers.init();
         } catch (error) {
             console.log(Error(error));
         }

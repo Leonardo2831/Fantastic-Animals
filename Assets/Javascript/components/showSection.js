@@ -3,7 +3,7 @@ import { Select, debounce } from "./utilitarianFunctions.js";
 export default class ShowSection {
     constructor(sections){
         this.sectionsShow = Select.All(sections);
-        this.windowHalf = window.innerHeight * 0.6;
+        this.windowHalf = window.innerHeight * 0.7;
         this.nameClass = "showScroll";
 
         this.checkDistance = debounce(this.checkDistance.bind(this), 50);
@@ -32,8 +32,6 @@ export default class ShowSection {
 
     init(){
         if(this.sectionsShow.length){
-            // this.sectionsShow[0].classList.add(this.nameClass);
-
             this.getDistance();
             this.checkDistance();
             window.addEventListener("scroll", this.checkDistance);

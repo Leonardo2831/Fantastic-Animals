@@ -59,5 +59,6 @@ const infoOperation = new InfoOperation('[data-open="content"] ul li:last-of-typ
 infoOperation.init();
 
 // slide
-const slide = new Slide('[data-slide="images"]', '[data-wrapper="slide"]');
+const slide = new Slide('[data-slide="images"]', '[data-wrapper="slide"]', "activeSlide");
 slide.init();
+slide.slidesIndex(0);

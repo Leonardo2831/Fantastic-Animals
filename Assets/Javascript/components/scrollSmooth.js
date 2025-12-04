@@ -20,8 +20,13 @@ export default class ScrollSmooth {
     scrollSmooth(event){
         event.preventDefault();
         const hrefLinks = event.currentTarget.getAttribute("href");
-        const sectionLink = Select.Single(hrefLinks);
 
+        if(!hrefLinks || hrefLinks === '#') {
+            console.log('href não encontrado');
+            return this;
+        }
+
+        const sectionLink = Select.Single(hrefLinks);
         sectionLink.scrollIntoView(this.options);
     }
 

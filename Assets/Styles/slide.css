@@ -1,9 +1,15 @@
 .slide__wrapper {
-    
+    overflow: hidden;
 }
 
 .slide__images {
     display: flex;
+
+    cursor: pointer;
+}
+
+.slide__images:hover{
+    
 }
 
 .slide__images li{
@@ -13,4 +19,17 @@
     max-width: 800px;
 
     margin: 0 20px;
+
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--shadow);
+
+    opacity: 0.8;
+    transform: scale(0.8);
+    transition: all 0.3s;
+}
+
+.slide__images li.activeSlide{
+    opacity: 1;
+    transform: scale(1);
 }

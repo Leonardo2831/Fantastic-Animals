@@ -3,12 +3,12 @@ import Questions from "./components/question.js";
 import TabNav from "./components/tabNav.js";
 import ModalForm from "./components/modalForm.js";
 import ToolTip from "./components/tooltip.js";
+import createAnimals from "./components/fetchAnimals.js";
 
 import initShowSection from "./components/showSection.js";
 import initInfoOperation from "./components/infoContact.js";
 import initDropDownNav from "./components/dropDownNav.js";
 import initMenuMobile from "./components/menu-mobile.js";
-import initFetchAnimals from "./components/fetchAnimals.js";
 import initBitCoinFetch from "./components/bitcoin.js";
 
 // scroll
@@ -42,9 +42,11 @@ modalForm.init();
 const toolTip = new ToolTip("[data-tooltip]");
 toolTip.init();
 
+const urlFetchAnimals = "Assets/data/animals.json";
+createAnimals(urlFetchAnimals, '[data-animals="number"]');
+
 initShowSection();
 initInfoOperation();
 initDropDownNav();
 initMenuMobile();
-initFetchAnimals();
 initBitCoinFetch();

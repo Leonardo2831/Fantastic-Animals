@@ -1,26 +1,48 @@
 import { Select } from "./utilitarianFunctions.js";
 
-export default function initShowSection() {
-    const sectionsShow = Select.All('[data-section="show"]');
-    const windowHalf = window.innerHeight * 0.5;
-    const nameClass = "showScroll";
+export default class ShowSection {
+    constructor(sections){
+        this.sectionsShow = Select.All(sections);
+        this.windowHalf = window.innerHeight * 0.5;
+        this.nameClass = "showScroll";
 
-    sectionsShow[0].classList.add(nameClass);
+        this.checkDistance = this.checkDistance.bind(this);
+    }
 
-    function showScroll() {
-        sectionsShow.forEach((sectionShow) => {
-            const sectionTop = sectionShow.getBoundingClientRect().top;
-            const sectionVisible = sectionTop - windowHalf;
+    getDistance(){
+        this.distances = [...this.sectionsShow].map((sectionShow) => {
+            const sectionTop = sectionShow.offsetTop;
 
-            if(sectionVisible < 0){
-                sectionShow.classList.add(nameClass);
-            } else if (sectionShow.classList.contains(nameClass)) {
-                sectionShow.classList.remove(nameClass);
+            return {
+                element: sectionShow,
+                offsetTop: Math.floor(sectionTop - this.windowHalf),
+            };
+        });
+    }
+
+    checkDistance(){
+        this.distances.forEach((distance) => {
+            if(window.pageYOffset > distance.offsetTop){
+                distance.element.classList.add(this.nameClass);
+            } else if (distance.element.classList.contains(this.nameClass)) {
+                distance.element.classList.remove(this.nameClass);
             }
         });
     }
 
-    if(sectionsShow.length){
-        window.addEventListener("scroll", showScroll);
+    init(){
+        if(this.sectionsShow.length){
+            // this.sectionsShow[0].classList.add(this.nameClass);
+
+            this.getDistance();
+            this.checkDistance();
+            window.addEventListener("scroll", this.checkDistance);
+        }
+
+        return this;
+    }
+
+    stop(){
+        window.removeEventListener("scroll", this.checkDistance);
     }
 }

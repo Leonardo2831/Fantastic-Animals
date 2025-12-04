@@ -30,10 +30,13 @@ export default class ToolTip {
         const pageY = event.pageY;
         const pageX = event.pageX;
 
-        this.toolTipBox.style.cssText = `
-            top: ${pageY + 20}px;
-            left: ${pageX + 20}px;
-        `;
+        this.toolTipBox.style.top = `${pageY + 20}px`;
+
+        if(event.pageX + 240 > window.innerWidth){
+            this.toolTipBox.style.left = `${pageX - 190}px`;
+        } else {
+            this.toolTipBox.style.left = `${pageX + 20}px`;
+        }
     }
 
     onMouseOver(event) {

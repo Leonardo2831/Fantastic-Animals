@@ -6,9 +6,9 @@ import ToolTip from "./components/tooltip.js";
 import createAnimals from "./components/fetchAnimals.js";
 import fetchBitcoin from "./components/bitcoin.js";
 import ShowSection from "./components/showSection.js";
+import DropDownNav from "./components/dropDownNav.js";
 
 import initInfoOperation from "./components/infoContact.js";
-import initDropDownNav from "./components/dropDownNav.js";
 import initMenuMobile from "./components/menu-mobile.js";
 
 // scroll
@@ -53,6 +53,9 @@ fetchBitcoin("https://blockchain.info/ticker", '[data-value="bitcoin"]');
 const showSection = new ShowSection('[data-section="show"]');
 showSection.init();
 
+// dropDownNav
+const dropDownNav = new DropDownNav("[data-dropdown]", "active");
+dropDownNav.init();
+
 initInfoOperation();
-initDropDownNav();
 initMenuMobile();

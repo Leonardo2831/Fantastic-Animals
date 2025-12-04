@@ -1,19 +1,32 @@
 import { Select, clickOutside } from "./utilitarianFunctions.js";
 
-export default function initDropDownNav() {
-    const dropDowns = Select.All("[data-dropdown]");
+export default class initDropDownNav {
+    constructor(dropDowns, datasetValue){
+        this.dropDowns = Select.All(dropDowns);
+        this.datasetValue = datasetValue;
 
-    function handleClick() {
-        this.dataset.dropdown = this.dataset.dropdown = "active";
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        event.preventDefault();
         
-        clickOutside(this, ["touchstart", "click"], () => {
-            this.dataset.dropdown = "";
+        const { currentTarget } = event;
+        currentTarget.dataset.dropdown = this.datasetValue;
+        
+        clickOutside(currentTarget, this.eventUser, () => {
+            currentTarget.dataset.dropdown = "";
         });
     }
 
-    dropDowns.forEach((dropDown) => {
-        ["touchstart", "click"].forEach((userEvent) => {
-            dropDown.addEventListener(userEvent, handleClick);
+    addEventDropDown(){
+        this.dropDowns.forEach((dropDown) => {
+            dropDown.addEventListener(this.eventUser, this.handleClick);
         });
-    });
+    }
+
+    init(){
+        this.hasTouch = !('ontouchstart' in window);
+        this.eventUser = this.hasTouch ? "touchstart" : "click";
+    }
 }

@@ -14,7 +14,11 @@ export default class Slide {
 
         this.onStart = this.onStart.bind(this);
         this.onMove = this.onMove.bind(this);
-        this.onUp = this.onUp.bind(this);
+        this.onEnd = this.onEnd.bind(this);
+    }
+
+    transition(active){
+        this.slide.style.transition = active ? 'transform .3s' : '';
     }
 
     moveSlide(distanceX){
@@ -42,7 +46,7 @@ export default class Slide {
     }
 
     // finish slide
-    onUp(){
+    onEnd(){
         if(this.hasTouch){
             this.wrapper.removeEventListener('touchmove', this.onMove);
         } else {
@@ -50,6 +54,21 @@ export default class Slide {
         }
 
         this.dist.finalPosition = this.dist.movePosition;
+        this.changeSlideEnd();
+
+        this.transition(true);
+    }
+
+    changeSlideEnd(){
+        if(this.dist.movement > 120 && this.index.next !== undefined){
+            this.activeNextSlide();
+        } else if(this.dist.movement < -120 && this.index.prev !== undefined){
+            this.activePrevSlide();
+        } else {
+            this.changeSlideEnd(this.index.current);
+        }
+
+        this.transition(true);
     }
 
     // init position slide
@@ -62,15 +81,17 @@ export default class Slide {
             this.dist.startX = event.clientX;
             this.wrapper.addEventListener('mousemove', this.onMove);
         }
+
+        this.transition(false);
     }
 
     addSlideEvents(){
         if(this.hasTouch){
             this.wrapper.addEventListener('touchstart', this.onStart);
-            this.wrapper.addEventListener('touchend', this.onUp);
+            this.wrapper.addEventListener('touchend', this.onEnd);
         } else {
             this.wrapper.addEventListener('mousedown', this.onStart);
-            this.wrapper.addEventListener('mouseup', this.onUp);
+            this.wrapper.addEventListener('mouseup', this.onEnd);
         }
     }
 
@@ -88,14 +109,15 @@ export default class Slide {
 
             return {
                 position: slidePosition,
-                element: slidePart,
+                slide: slidePart,
             };
         });
     }
 
+    // get index of slides
     slidesIndex(index){
         const last = this.slideArray.length - 1;
-
+        
         this.index = {
             prev: index === 0 ? undefined : index - 1,
             current: index,
@@ -108,13 +130,27 @@ export default class Slide {
 
         this.moveSlide(activeSlide.position);
         this.slidesIndex(index);
-        
+
         this.dist.finalPosition = activeSlide.position;
+    }
+
+    activePrevSlide(){
+        if(this.index.prev !== undefined){
+            this.changeSlide(this.index.prev);
+        }
+    }
+
+    activeNextSlide(){
+        if(this.index.next !== undefined){
+            this.changeSlide(this.index.next);
+        }
     }
 
     init(){
         if(this.slide && this.wrapper){
             this.addSlideEvents();
+            this.slidesConfig();
+            this.transition(true);
         }
 
         return this;

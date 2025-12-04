@@ -10,6 +10,8 @@ export default class Slide {
             movement: 0,
         };
 
+        this.hasTouch = !!(window.ontouchstart);
+
         this.onStart = this.onStart.bind(this);
         this.onMove = this.onMove.bind(this);
         this.onUp = this.onUp.bind(this);
@@ -27,28 +29,46 @@ export default class Slide {
     }
 
     onMove(event){
-        const finalPosition = this.updateDistance(event.clientX);
+        let finalPosition = 0;
+
+        if(this.hasTouch){
+            finalPosition = this.updateDistance(event.changedTouches[0].clientX);
+        } else {
+            finalPosition = this.updateDistance(event.clientX);
+        }
 
         this.moveSlide(finalPosition);
     }
 
     onUp(){
-        this.wrapper.removeEventListener('mousemove', this.onMove);
+        if(this.hasTouch){
+            this.wrapper.removeEventListener('touchmove', this.onMove);
+        } else {
+            this.wrapper.removeEventListener('mousemove', this.onMove);
+        }
 
         this.dist.finalPosition = this.dist.movePosition;
     }
 
     onStart(event){
-        event.preventDefault();
-
-        this.dist.startX = event.clientX;
-
-        this.wrapper.addEventListener('mousemove', this.onMove);
+        if(this.hasTouch){
+            this.dist.startX = event.changedTouches[0].clientX;
+            this.wrapper.addEventListener('touchmove', this.onMove);
+        } else {
+            event.preventDefault();
+            this.dist.startX = event.clientX;
+            this.wrapper.addEventListener('mousemove', this.onMove);
+        }
     }
 
     addSlideEvents(){
-        this.wrapper.addEventListener('mousedown', this.onStart);
-        this.wrapper.addEventListener('mouseup', this.onUp);
+        if(this.hasTouch){
+            this.wrapper.addEventListener('touchstart', this.onStart);
+            this.wrapper.addEventListener('touchend', this.onUp);
+        } else {
+            this.wrapper.addEventListener('mousedown', this.onStart);
+            this.wrapper.addEventListener('mouseup', this.onUp);
+        }
     }
 
     init(){

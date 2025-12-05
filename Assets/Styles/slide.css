@@ -1,15 +1,13 @@
 .slide__wrapper {
     overflow: hidden;
+
+    grid-column: span 3;
 }
 
 .slide__images {
     display: flex;
 
     cursor: pointer;
-}
-
-.slide__images:hover{
-    
 }
 
 .slide__images li{
@@ -32,4 +30,29 @@
 .slide__images li.activeSlide{
     opacity: 1;
     transform: scale(1);
+}
+
+ul[data-control='slide']{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+ul[data-control='slide'] li a{
+    width: 16px;
+    height: 16px;
+    margin: 8px;
+
+    background-color: var(--yellow);
+    color: transparent;
+    border-radius: 100%;
+    text-indent: -999px;
+
+    overflow: hidden;
+    transition: 0.2s ease;
+}
+
+ul[data-control='slide'] li a:hover,
+ul[data-control='slide'] li.activeNavigation a{
+    background-color: var(--orange);
 }

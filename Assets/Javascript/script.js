@@ -9,7 +9,7 @@ import ShowSection from "./components/showSection.js";
 import DropDownNav from "./components/dropDownNav.js";
 import MenuMobile from "./components/menu-mobile.js";
 import InfoOperation from "./components/infoContact.js";
-import Slide from "./components/slide.js";
+import SlideNav from "./components/slide.js";
 
 // scroll
 const optionsScroll = {
@@ -59,6 +59,7 @@ const infoOperation = new InfoOperation('[data-open="content"] ul li:last-of-typ
 infoOperation.init();
 
 // slide
-const slide = new Slide('[data-slide="images"]', '[data-wrapper="slide"]', "activeSlide");
+const slide = new SlideNav('[data-slide="images"]', '[data-wrapper="slide"]', "activeSlide");
 slide.init();
 slide.slidesIndex(0);
+slide.addArrow('[data-prev]', '[data-next]');

@@ -63,3 +63,4 @@ const slide = new SlideNav('[data-slide="images"]', '[data-wrapper="slide"]', "a
 slide.init();
 slide.slidesIndex(0);
 slide.addArrow('[data-prev]', '[data-next]');
+slide.addControl();

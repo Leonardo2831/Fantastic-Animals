@@ -159,4 +159,11 @@
     .js [data-mobile="button"].activeMobile::before{
         transform: rotate(90deg);
     }
+
+    [data-dropdown] .dropdown-menu,
+    [data-dropdown="active"] .dropdown-menu{
+        display: block;
+
+        animation: showBottom-to-Top 0.3s forwards;
+    }
 }

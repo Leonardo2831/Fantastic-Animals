@@ -188,14 +188,14 @@
   .animals__about {
     grid-column: 2;
   }
+
+  .number-animal h3 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .number-animal h3 {
-    font-size: 1.7rem;
-  }
-
   .number-animal span {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 }

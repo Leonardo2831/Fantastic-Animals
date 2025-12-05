@@ -1,6 +1,4 @@
-.slide__wrapper {
-    overflow: hidden;
-
+.slide > * {
     grid-column: span 3;
 }
 
@@ -55,4 +53,50 @@ ul[data-control='slide'] li a{
 ul[data-control='slide'] li a:hover,
 ul[data-control='slide'] li.activeSlide a{
     background-color: var(--orange);
+}
+
+.custom-controls{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0 20px 0;
+}
+
+.custom-controls li{
+    opacity: 0.8;
+    transform: scale(0.8);
+
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0 2px 2px var(--shadow);
+
+    transition: all 0.3s;
+}
+
+.custom-controls li.activeSlide{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.arrow-nav{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.arrow-nav button{
+    padding: 25px;
+    border-radius: 4px;
+    background: var(--yellow) url('../Images/arrow.svg') no-repeat center center;
+
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.arrow-nav button[data-prev]{
+    transform: rotate(-180deg);
 }

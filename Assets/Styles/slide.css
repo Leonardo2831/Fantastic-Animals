@@ -53,6 +53,6 @@ ul[data-control='slide'] li a{
 }
 
 ul[data-control='slide'] li a:hover,
-ul[data-control='slide'] li.activeNavigation a{
+ul[data-control='slide'] li.activeSlide a{
     background-color: var(--orange);
 }
